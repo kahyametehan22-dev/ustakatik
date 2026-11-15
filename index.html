@@ -1,4 +1,13 @@
-<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8"><title>Döner Mağazası</title>
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8"><title>Efsane Katık</title>
+<meta name="theme-color" content="#9e1a14">
+<meta name="description" content="Efsane Katık — mahalle dönercisi oyunu.">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Efsane Katık">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <style>
 :root{--g:rgba(26,19,14,.66);--l:rgba(255,255,255,.18);--acc:#ffb13b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -78,7 +87,7 @@ body.tut #pz{display:none}body.tut #phone{max-height:26vh}body.menu #coach{displ
 <div id="toast" class="gl"></div>
 <div id="scr">
 <div id="s-menu" class="sc on"><div class="in">
-<div class="hero"><div class="plq"><h1>ŞİŞ DÖNER</h1></div><p class="tagl">Mahalle dönercisi: kes, sar, sat.</p></div>
+<div class="hero"><div class="plq"><h1>EFSANE KATIK</h1></div><p class="tagl">Mahalle dönercisi: kes, sar, sat.</p></div>
 <div class="col">
 <label class="nm">Ustanın adı<input id="nm" maxlength="10" placeholder="Usta" autocomplete="off"></label>
 <button class="bt pri" data-u="nav:single"><b>🥙 Tek oyuncu</b><small>Dükkânı çalıştır, rakibi bombala</small></button>
@@ -406,4 +415,10 @@ const dr=Math.hypot(p.x,p.z+70);$('rv').style.display=dr<55?'block':'none';$('rv
 let last=performance.now();
 function loop(n){requestAnimationFrame(loop);const dt=Math.min(.05,(n-last)/1000);last=n;spit.rotation.y+=dt*1.6;heat.material.emissiveIntensity=.8+Math.sin(n/120)*.2;pl.intensity=1.1+Math.sin(n/90)*.15;if(run)tick(dt);animNPC(dt);upd(dt);R.render(S,cam)}
 drawPlate();drawPhone();setRival([]);segs();$('nm').value=ls('sd_name')||'';showScreen('menu');requestAnimationFrame(loop);
+</script>
+<script>
+// PWA servis çalışanı: uygulama kabuğunu önbelleğe alır.
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(err => console.warn('Service worker kaydedilemedi:', err)));
+}
 </script></body></html>
